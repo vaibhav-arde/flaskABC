@@ -1,6 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
+
+@app.route('/', methods=['GET', 'POST'])
+def home_page():
+    return render_template('index.html')
 
 @app.route("/")
 def hello_world():
@@ -9,6 +13,10 @@ def hello_world():
 @app.route("/about")
 def hello_about():
     return "<h1>Hello About<h1>"
+
+@app.route("/login")
+def hello_login():
+    return "<h1>I am logged in<h1>"
 
 @app.route("/useParam")
 def useParam():
